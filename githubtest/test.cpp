@@ -1,43 +1,73 @@
-//question
 /*
-对于表达式n^2+n+41，当n在（x,y）范围内取整数值时（包括x,y）(-39<=x<y<=50)，判定该表达式的值是否都为素数。
+输入n(n<=100)个整数，按照绝对值从大到小排序后输出。题目保证对于每一个测试实例，所有的数的绝对值都不相等。
 Input
-输入数据有多组，每组占一行，由两个整数x，y组成，当x=0,y=0时，表示输入结束，该行不做处理。
+输入数据有多组，每组占一行，每行的第一个数字为n,接着是n个整数，n=0表示输入数据的结束，不做处理。
 Output
-对于每个给定范围内的取值，如果表达式的值都为素数，则输出"OK",否则请输出“Sorry”,每组输出占一行。
+对于每个测试实例，输出排序后的结果，两个数之间用一个空格隔开。每个测试实例占一行。
 Sample Input
-0 1
-0 0
+3 3 -4 2
+4 0 1 2 -3
+10 9 8 7 6 5 4 11 2 1 0
+1 0
+2 71 90
+4 -3 9 -6 -4 
+5 2 3 5 6 7
+0
 Sample Output
-OK
+-4 3 2
+-3 2 1 0
 */
 #include<iostream>
 using namespace std;
-bool isnotpr(int n)
+bool isbigger(int a,int b)
 {
-	for(int i=2;i*i<=n;i++)if(n%i==0)
+	if(a<0)a*=-1;
+	if(b<0)b*=-1;
+	if(a>b)return true;
+	return false;
+}
+void insert(int* ar,int i,int j)
+{
+	int tem=ar[i];
+	for(;i>j;i--)
 	{
-		cout<<'<'<<i<<'>';
-		return false;
+		ar[i]=ar[i-1];
 	}
-	return true;
+	ar[0]=tem;
 }
 int main()
 {
-	for(int i=-39;i<51;i++)
-	{
-		int num;
-		num=i*i+i+41;
-		cout<<i<<"  "<<num<<"  "<<isnotpr(num)<<endl;
-	}
+	int n=4;
+//	while(cin>>n)
+//	{
+//		if(n!=0)
+//		{
+			int arr[]={3,9,6,4};
+			int tem;
+//			for(int i=0;i<n;i++)cin>>arr[i];
+			for(int i=1;i<n;i++)
+				for(int j=0;j<i;j++)
+				{
+					if(arr[i]>arr[j])
+					{
+						int ii=i;
+						int te=arr[ii];
+						for(;ii>j;ii--)
+						{
+							arr[ii]=arr[ii-1];
+						}
+						arr[0]=te;
+					}
+				}
+//			for(int i=0;i<n;i++)
+//			{
+//				if(i!=0)printf(" ");
+//				printf("%d",arr[i]);
+//			}
+//			printf("\n");			
+//		}
+//	}
 }
-
-
-
-
-
-
-
 
 
 

@@ -10,6 +10,8 @@ Sample Input
 10 9 8 7 6 5 4 11 2 1 0
 1 0
 2 71 90
+4 -3 9 -6 -4 
+5 2 3 5 6 7
 0
 Sample Output
 -4 3 2
@@ -31,7 +33,7 @@ void insert(int* ar,int i,int j)
 	{
 		ar[i]=ar[i-1];
 	}
-	ar[0]=tem;
+	ar[j]=tem;
 }
 int main()
 {
